@@ -65,7 +65,8 @@ class Dev(Configuration):
         "allauth.socialaccount",
         "allauth.socialaccount.providers.google",
         "rest_framework",
-        "rest_framework.authtoken"
+        "rest_framework.authtoken",
+        "drf_yasg",
         
     ]
     SITE_ID = 1
@@ -92,6 +93,13 @@ class Dev(Configuration):
     ROOT_URLCONF = 'blango.urls'
 
     INTERNAL_IPS = ["192.168.11.179"]
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
 
 
     TEMPLATES = [
